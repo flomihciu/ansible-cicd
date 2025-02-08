@@ -1,4 +1,3 @@
----
 - hosts: all
   become: yes
   tasks:
@@ -9,6 +8,12 @@
 
   - name: Copy Website Files
     copy:
-      src: /home/flomihciu/devops/gitact/w14d4/ansible-cicd
-      dest: /var/www/html/
+      src: /home/flomihciu/devops/gitact/w14d4/ansible-cicd/index.html
+      dest: /var/www/html/index.html
       mode: '0644'
+
+  - name: Ensure Nginx is running and enabled
+    service:
+      name: nginx
+      state: started
+      enabled: yes
