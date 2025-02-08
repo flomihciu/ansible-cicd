@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: Install Nginx
+    apt:
+      name: nginx
+      state: present
+
+  - name: Copy Website Files
+    copy:
+      src: /home/flomihciu/devops/gitact/w14d4/ansible-cicd
+      dest: /var/www/html/
+      mode: '0644'
